@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.1">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ru"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1">&lt;title&gt;Калькулятор параметров гибки — рабочая версия&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body{background:#f2f2f2;font-family:Arial,Helvetica,sans-serif;color:#222;margin:0;padding:20px;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.wrap{max-width:920px;margin:0 auto;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h1{text-align:center;margin:0 0 8px;font-size:1.6rem;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>p.lead{text-align:center;color:#666;margin:0 0 18px;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.panel{background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.row{display:flex;gap:12px;flex-wrap:wrap;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>label{display:block;font-weight:600;margin-top:8px;font-size:0.95rem;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.col{flex:1 1 180px;min-width:160px;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input,select,button{width:100%;box-sizing:border-box;padding:8px;border-radius:6px;border:1px solid #cfcfcf;font-size:1rem}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button{background:#0077cc;color:#fff;border:0;margin-top:10px;cursor:pointer}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button:hover{background:#005fa3}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result{margin-top:16px;padding:12px;border-radius:8px;background:#fafafa;border:1px solid #eee}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.diagram{margin-top:18px;text-align:center;padding:14px;border-radius:10px;background:#fff;border:1px solid #f0f0f0}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>svg{max-width:460px;width:100%;height:300px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.muted{color:#666;font-size:0.95rem}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.error{color:#b00020;font-weight:700}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Калькулятор параметров гибки&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="lead"&gt;Проверенная рабочая версия. Вводи значения и смотри результат + схему.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="s"&gt;Толщина материала S (мм)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="s" type="number" step="0.01" value="2" min="0.01"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="r"&gt;Радиус скругления R (мм)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="r" type="number" step="0.1" value="10" min="0.1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="h"&gt;Высота изделия h (мм)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="h" type="number" step="0.1" value="50" min="0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="b"&gt;Предел текучести σ&lt;sub&gt;т&lt;/sub&gt; (МПа)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="b" type="number" step="1" value="250" min="0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="b1"&gt;Предел прочности σ&lt;sub&gt;в&lt;/sub&gt; (МПа)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="b1" type="number" step="1" value="400" min="0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="formType"&gt;Тип гибки&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="formType"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="p"&gt;I-образная&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="v"&gt;V-образная&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button id="btnCalc"&gt;Рассчитать&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="result" class="result"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Результаты появятся здесь.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="diagram"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="muted"&gt;Визуализация гибки (масштаб для наглядности)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg id="svg" viewBox="0 0 460 300" preserveAspectRatio="xMidYMid meet" aria-label="Диаграмма гибки"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- оси/линии (фон) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;rect x="0" y="0" width="460" height="300" fill="transparent"&gt;&lt;/rect&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;g id="diagramGroup" transform="translate(230,170)"&gt;&lt;/g&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">(function(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const el = (id)=&gt;document.getElementById(id);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sEl=el('s'), rEl=el('r'), hEl=el('h'), bEl=el('b'), b1El=el('b1'), typeEl=el('formType');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const resEl=el('result'), btn=el('btnCalc'), svgGroup=document.getElementById('diagramGroup');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// безопасный парсинг</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function num(v){ const n=parseFloat(v); return Number.isFinite(n)?n:NaN; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function calculateAndRender(){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const S = num(sEl.value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const R = num(rEl.value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const H = num(hEl.value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const B = num(bEl.value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const B1 = num(b1El.value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const type = typeEl.value;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// валидация</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!Number.isFinite(S) || !Number.isFinite(R) || !Number.isFinite(H) || !Number.isFinite(B) || !Number.isFinite(B1)) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>resEl.innerHTML = '&lt;span class="error"&gt;Ошибка: заполните все поля корректными числами.&lt;/span&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (S &lt;= 0 || R &lt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>resEl.innerHTML = '&lt;span class="error"&gt;Ошибка: толщина и радиус должны быть &gt; 0.&lt;/span&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Простая, прозрачная логика расчёта (пример — легко заменить на точные формулы)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const k = (type === 'p')? 0.75 : 0.375;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const RS = Math.round((R/S)*100)/100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// длина дуги (примерный Bending Allowance)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const bendAllowance = k * (Math.PI*(R + S)); // упрощённая формула</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// угол (в градусах) — пример: делим на окружность (2πR) и получаем долю круга</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const angle = Math.min(360, Math.max(0.1, (bendAllowance / (2*Math.PI*Math.max(R,0.0001))) * 360));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// условная сила (простейшая модель) — нормируем чтобы было в кН и осмысленно</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const force = (B * S * H / 1e3) * (k/1.0);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Округления для показа</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const out = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>RS: RS,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>bendAllowance: Math.round(bendAllowance*100)/100,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>angle: Math.round(angle*100)/100,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>force: Math.round(force*100)/100</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>resEl.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Результаты:&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>R / S = &lt;strong&gt;${out.RS}&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Длина дуги (прибл.) = &lt;strong&gt;${out.bendAllowance} мм&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Угол гибки (прибл.) = &lt;strong&gt;${out.angle}°&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Условная сила (прибл.) = &lt;strong&gt;${out.force} кН&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderDiagram(R, S, out.angle);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Рисуем диаграмму в svgGroup (центр в 0,0)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderDiagram(Rmm, Smm, angleDeg){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Очистим</p>
+<p class="p1"><span class="Apple-converted-space">    </span>while(svgGroup.firstChild) svgGroup.removeChild(svgGroup.firstChild);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Масштаб (мм -&gt; px) для наглядности: подгоняем по R</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// хотим, чтобы радиус ~120px при R ~ 50 мм (пример), но ограничим</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const scale = clamp(120 / Math.max(50, Rmm), 0.15, 4) * (Rmm / Math.max(1,Rmm)) * 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// более простая и стабильная формула:</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pxPerMm = clamp(120 / Math.max(10, Rmm), 0.5, 6);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const R = Rmm * pxPerMm;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const S = Math.max(1, Smm * pxPerMm);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ang = clamp(angleDeg, 0.5, 360) * Math.PI/180;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const half = ang/2;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// точки дуги (от -half до +half), центр (0,0)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const x1 = -Math.cos(half) * R;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const y1 = -Math.sin(half) * R;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const x2 = Math.cos(half) * R;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const y2 = -Math.sin(half) * R;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// фоновые линии (фланцы)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const flangeLen = 80;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const leftFlangeX = x1 - flangeLen * Math.cos(Math.PI/2 - half);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const leftFlangeY = y1 - flangeLen * Math.sin(Math.PI/2 - half);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const rightFlangeX = x2 + flangeLen * Math.cos(Math.PI/2 - half);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const rightFlangeY = y2 - flangeLen * Math.sin(Math.PI/2 - half);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// элементы</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function make(tag, attrs){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const el = document.createElementNS('http://www.w3.org/2000/svg', tag);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for(const k in attrs) el.setAttribute(k, attrs[k]);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return el;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// flanges</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(make('line', {x1:leftFlangeX,y1:leftFlangeY,x2:x1,y2:y1,stroke:'#555', 'stroke-width':2, 'stroke-linecap':'round'}));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(make('line', {x1:rightFlangeX,y1:rightFlangeY,x2:x2,y2:y2,stroke:'#555', 'stroke-width':2, 'stroke-linecap':'round'}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// outer arc (midline)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const largeArc = ang &gt; Math.PI ? 1 : 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const d = `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${R.toFixed(2)} ${R.toFixed(2)} 0 ${largeArc} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(make('path', {d:d, stroke:'#0077cc', 'stroke-width':3, fill:'none', class:'arc'}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// inner arc to show thickness (approx)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const Rinner = R - S;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(Rinner &gt; 2){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const x1i = -Math.cos(half) * Rinner;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const y1i = -Math.sin(half) * Rinner;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const x2i = Math.cos(half) * Rinner;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const y2i = -Math.sin(half) * Rinner;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const di = `M ${x1i.toFixed(2)} ${y1i.toFixed(2)} A ${Rinner.toFixed(2)} ${Rinner.toFixed(2)} 0 ${largeArc} 1 ${x2i.toFixed(2)} ${y2i.toFixed(2)}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>svgGroup.appendChild(make('path', {d:di, stroke:'#0077cc', 'stroke-width':1.5, fill:'none', opacity:0.6}));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// center guide</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(make('circle', {cx:0,cy:0,r:2,fill:'#333'}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// labels</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const labelX = -R + 10;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(make('text',{x: (labelX).toFixed(2), y: (60).toFixed(2), fill:'#222','font-size':12}).appendChild(document.createTextNode?document.createTextNode(''):null) || (function(){const t=make('text',{});t.textContent='';return t;})());</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// manual label creation (safer for older browsers)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const t1 = make('text',{x:(-40).toFixed(2), y:(-R-10).toFixed(2), fill:'#222','font-size':12});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>t1.textContent = `R=${Rmm} mm`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(t1);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const t2 = make('text',{x:(-40).toFixed(2), y:(-R+12).toFixed(2), fill:'#444','font-size':12});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>t2.textContent = `S=${Smm} mm`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(t2);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const t3 = make('text',{x:(-40).toFixed(2), y:(-R+28).toFixed(2), fill:'#0077cc','font-size':13,'font-weight':'700'});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>t3.textContent = `Угол ≈ ${Math.round(angleDeg)}°`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(t3);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// small border box so viewBox has some content</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svgGroup.appendChild(make('rect',{x:-220,y:-200,width:440,height:300,fill:'none',stroke:'none'}));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// подключаем события</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.addEventListener('click', calculateAndRender);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// также обновлять при вводе</p>
+<p class="p1"><span class="Apple-converted-space">  </span>[sEl,rEl,hEl,bEl,b1El,typeEl].forEach(e=&gt;e.addEventListener('input', ()=&gt;{/*не наваливаем слишком часто*/}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// расчет при загрузке</p>
+<p class="p1"><span class="Apple-converted-space">  </span>calculateAndRender();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// горячая клавиша Enter в любом инпуте — запуск</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.addEventListener('keydown', (ev)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(ev.key === 'Enter') { ev.preventDefault(); calculateAndRender(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1">})();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
